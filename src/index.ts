@@ -22,7 +22,7 @@ async function run(): Promise<void> {
 
     const github_server_url = process.env.GITHUB_SERVER_URL || "";
     const github_repos = process.env.GITHUB_REPOSITORY || "";
-    const run_id = process.env.GITHUB_RUN_ID || "";
+    const environment = process.env.ENVIRONMENT || "";
     const actionsUrl = `${github_server_url}/${github_repos}/actions/runs/${run_id}`;
     const workflow   = process.env.GITHUB_WORKFLOW || "";
     const runnerOS   = process.env.RUNNER_OS || "";
@@ -57,7 +57,7 @@ async function run(): Promise<void> {
                 },
                 {
                   "type": "mrkdwn",
-                  "text": `*GITHUB_RUN_ID:*\n${run_id}`
+                  "text": `*ENVIRONMENT:*\n${environment}`
                 },
                 {
                   "type": "mrkdwn",
