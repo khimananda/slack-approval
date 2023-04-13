@@ -6,6 +6,7 @@ const token = process.env.SLACK_BOT_TOKEN || ""
 const signingSecret =  process.env.SLACK_SIGNING_SECRET || ""
 const slackAppToken = process.env.SLACK_APP_TOKEN || ""
 const channel_id    = process.env.SLACK_CHANNEL_ID || ""
+const environment   = process.env.ENVIRONMENT || ""
 
 const app = new App({
   token: token,
@@ -22,7 +23,7 @@ async function run(): Promise<void> {
 
     const github_server_url = process.env.GITHUB_SERVER_URL || "";
     const github_repos = process.env.GITHUB_REPOSITORY || "";
-    const environment = process.env.ENVIRONMENT || "";
+    const run_id = process.env.GITHUB_RUN_ID || "";
     const actionsUrl = `${github_server_url}/${github_repos}/actions/runs/${run_id}`;
     const workflow   = process.env.GITHUB_WORKFLOW || "";
     const runnerOS   = process.env.RUNNER_OS || "";

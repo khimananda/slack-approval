@@ -39,6 +39,7 @@ const token = process.env.SLACK_BOT_TOKEN || "";
 const signingSecret = process.env.SLACK_SIGNING_SECRET || "";
 const slackAppToken = process.env.SLACK_APP_TOKEN || "";
 const channel_id = process.env.SLACK_CHANNEL_ID || "";
+const environment = process.env.ENVIRONMENT || "";
 const app = new bolt_1.App({
     token: token,
     signingSecret: signingSecret,
@@ -87,7 +88,7 @@ function run() {
                                 },
                                 {
                                     "type": "mrkdwn",
-                                    "text": `*GITHUB_RUN_ID:*\n${run_id}`
+                                    "text": `*ENVIRONMENT:*\n${environment}`
                                 },
                                 {
                                     "type": "mrkdwn",
