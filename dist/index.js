@@ -57,19 +57,18 @@ function run() {
             const github_repos = process.env.GITHUB_REPOSITORY || "";
             const run_id = process.env.GITHUB_RUN_ID || "";
             const actionsUrl = `${github_server_url}/${github_repos}/actions/runs/${run_id}`;
-            const workflow = process.env.GITHUB_WORKFLOW || "";
             const runnerOS = process.env.RUNNER_OS || "";
-            const actor = process.env.GITHUB_ACTOR || "";
+            const actor = process.env.USER_NAME || "";
             (() => __awaiter(this, void 0, void 0, function* () {
                 yield web.chat.postMessage({
                     channel: channel_id,
-                    text: "GitHub Actions Approval request",
+                    text: "ARE ALL SMOKE GROUPS GREEN?",
                     blocks: [
                         {
                             "type": "section",
                             "text": {
                                 "type": "mrkdwn",
-                                "text": `GitHub Actions Approval Request`,
+                                "text": `Hey @${actor} 🌪️\nPlease verify all smoke groups are green. If not, sort the issue by fixing bugs and re-running the group. Proceed only after that.`,
                             }
                         },
                         {
@@ -77,15 +76,7 @@ function run() {
                             "fields": [
                                 {
                                     "type": "mrkdwn",
-                                    "text": `*GitHub Actor:*\n${actor}`
-                                },
-                                {
-                                    "type": "mrkdwn",
                                     "text": `*Actions URL:*\n${actionsUrl}`
-                                },
-                                {
-                                    "type": "mrkdwn",
-                                    "text": `*Workflow:*\n${workflow}`
                                 },
                             ]
                         },
