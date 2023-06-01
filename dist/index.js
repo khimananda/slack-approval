@@ -81,24 +81,12 @@ function run() {
                                 },
                                 {
                                     "type": "mrkdwn",
-                                    "text": `*Repos:*\n${github_server_url}/${github_repos}`
-                                },
-                                {
-                                    "type": "mrkdwn",
                                     "text": `*Actions URL:*\n${actionsUrl}`
-                                },
-                                {
-                                    "type": "mrkdwn",
-                                    "text": `*ENVIRONMENT:*\n${environment}`
                                 },
                                 {
                                     "type": "mrkdwn",
                                     "text": `*Workflow:*\n${workflow}`
                                 },
-                                {
-                                    "type": "mrkdwn",
-                                    "text": `*URL:*\n${url}`
-                                }
                             ]
                         },
                         {
