@@ -39,7 +39,7 @@ async function run(): Promise<void> {
               "type": "section",
               "text": {
                   "type": "mrkdwn",
-                  "text": `GitHub Actions Approval Request`,
+                  "text": `*GitHub Actions Approval Request*`,
                 }
             },
             {
@@ -47,16 +47,16 @@ async function run(): Promise<void> {
               "fields": [
                 {
                   "type": "mrkdwn",
-                  "text": `*GitHub Actor:*\n${actor}`
+                  "text": `*GitHub Actor:* ${actor}`
                 },
                 
                 {
                   "type": "mrkdwn",
-                  "text": "<" + actionsUrl + "|Go to action>"
+                  "text": "<" + actionsUrl + "|GO TO ACTION>"
                 },
                 {
                   "type": "mrkdwn",
-                  "text": `*ENVIRONMENT:*\n${environment}`
+                  "text": `*ENV:*\n${environment}`
                 },
                 {
                   "type": "mrkdwn",
@@ -64,7 +64,7 @@ async function run(): Promise<void> {
                 },
                 {
                   "type": "mrkdwn",
-                  "text": `*URL:*\n${url}`
+                  "text": `*URL: *${url}`
                 }
               ]
             },
