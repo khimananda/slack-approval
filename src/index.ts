@@ -52,7 +52,7 @@ async function run(): Promise<void> {
                 
                 {
                   "type": "mrkdwn",
-                  "text": "<${actionsUrl}|Go to action>"
+                  "text": "<" + actionsUrl + "|Go to action>"
                 },
                 {
                   "type": "mrkdwn",
