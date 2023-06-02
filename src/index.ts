@@ -8,13 +8,14 @@ const slackAppToken = process.env.SLACK_APP_TOKEN || ""
 const channel_id    = process.env.SLACK_CHANNEL_ID || ""
 const environment   = process.env.ENVIRONMENT || ""
 const url           = process.env.URL || ""
+const port          = process.env.PORT || 3000
 
 const app = new App({
   token: token,
   signingSecret: signingSecret,
   appToken: slackAppToken,
   socketMode: true,
-  port: 3000,
+  port: port,
   logLevel: LogLevel.DEBUG,
 });
 
