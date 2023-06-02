@@ -33,7 +33,7 @@ async function run(): Promise<void> {
     (async () => {
       await web.chat.postMessage({ 
         channel: channel_id, 
-        text: "GitHub Actions Approval request",
+        text: "GitHub <" + actionsUrl + "|ACTION> Approval request",
         blocks: [
             {
               "type": "section",
@@ -56,11 +56,11 @@ async function run(): Promise<void> {
                 },
                 {
                   "type": "mrkdwn",
-                  "text": `*ENV:*\n${environment}`
+                  "text": `*ENV:* ${environment}`
                 },
                 {
                   "type": "mrkdwn",
-                  "text": `*Workflow:*\n${workflow}`
+                  "text": `*Workflow:* ${workflow}`
                 },
                 {
                   "type": "mrkdwn",
