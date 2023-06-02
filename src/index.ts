@@ -52,10 +52,6 @@ async function run(): Promise<void> {
                 
                 {
                   "type": "mrkdwn",
-                  "text": "<" + actionsUrl + "|GO TO ACTION>"
-                },
-                {
-                  "type": "mrkdwn",
                   "text": `*ENV:* ${environment}`
                 },
                 {

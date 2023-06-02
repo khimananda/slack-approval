@@ -81,10 +81,6 @@ function run() {
                                 },
                                 {
                                     "type": "mrkdwn",
-                                    "text": "<" + actionsUrl + "|GO TO ACTION>"
-                                },
-                                {
-                                    "type": "mrkdwn",
                                     "text": `*ENV:* ${environment}`
                                 },
                                 {
