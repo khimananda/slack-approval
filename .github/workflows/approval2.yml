@@ -1,4 +1,4 @@
-name: Test slack-approval
+name: slack-approval2
 
 on:
   push:
