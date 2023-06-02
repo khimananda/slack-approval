@@ -28,7 +28,7 @@ async function run(): Promise<void> {
     const actionsUrl = `${github_server_url}/${github_repos}/actions/runs/${run_id}`;
     const workflow   = process.env.GITHUB_WORKFLOW || "";
     const runnerOS   = process.env.RUNNER_OS || "";
-    const actor      = process.env.GITHUB_ACTOR || "";
+    const actor      = process.env.USER_NAME || "";
 
     (async () => {
       await web.chat.postMessage({ 
@@ -49,10 +49,7 @@ async function run(): Promise<void> {
                   "type": "mrkdwn",
                   "text": `*GitHub Actor:*\n${actor}`
                 },
-                {
-                  "type": "mrkdwn",
-                  "text": `*Repos:*\n${github_server_url}/${github_repos}`
-                },
+                
                 {
                   "type": "mrkdwn",
                   "text": `*Actions URL:*\n${actionsUrl}`
