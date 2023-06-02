@@ -63,13 +63,13 @@ function run() {
             (() => __awaiter(this, void 0, void 0, function* () {
                 yield web.chat.postMessage({
                     channel: channel_id,
-                    text: "GitHub <" + actionsUrl + "|ACTION> Approval request",
+                    text: "GitHub Actions Approval request",
                     blocks: [
                         {
                             "type": "section",
                             "text": {
                                 "type": "mrkdwn",
-                                "text": `*GitHub Actions Approval Request*`,
+                                "text": "GitHub <" + actionsUrl + "|ACTION> Approval Request",
                             }
                         },
                         {
