@@ -8,7 +8,7 @@ const slackAppToken = process.env.SLACK_APP_TOKEN || ""
 const channel_id    = process.env.SLACK_CHANNEL_ID || ""
 const environment   = process.env.ENVIRONMENT || ""
 const url           = process.env.URL || ""
-const runport : any  = process.env.PORT || 3000
+const runport : any  = process.env.PORT || 0
 
 const app = new App({
   token: token,

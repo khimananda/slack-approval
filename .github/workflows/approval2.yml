@@ -30,6 +30,5 @@ jobs:
           SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
           ENVIRONMENT: "production-approval2"
           URL: "https://khimanand.com.np"
-          PORT: 3002
         timeout-minutes: 10
       
