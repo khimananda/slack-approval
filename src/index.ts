@@ -28,7 +28,7 @@ async function run(): Promise<void> {
     const actionsUrl = `${github_server_url}/${github_repos}/actions/runs/${run_id}`;
     const workflow   = process.env.GITHUB_WORKFLOW || "";
     const runnerOS   = process.env.RUNNER_OS || "";
-    const actor      = process.env.USER_NAME || "";
+    const actor      = process.env.GITHUB_ACTOR || "";
 
     (async () => {
       await web.chat.postMessage({ 
