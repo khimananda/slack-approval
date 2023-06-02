@@ -81,7 +81,7 @@ function run() {
                                 },
                                 {
                                     "type": "mrkdwn",
-                                    "text": `[Go to action](${actionsUrl})`
+                                    "text": "<${actionsUrl}|Go to action>"
                                 },
                                 {
                                     "type": "mrkdwn",
