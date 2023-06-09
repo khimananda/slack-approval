@@ -28,7 +28,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
           SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-          ENVIRONMENT: "production-approval2"
+          ENVIRONMENT: "eu-production"
           URL: "https://khimanand.com.np"
         timeout-minutes: 10
       
