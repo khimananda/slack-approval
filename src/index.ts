@@ -98,8 +98,9 @@ async function run(): Promise<void> {
       });
     })();
 
-    app.action('slack-approval-approve', async ({ack, client, body, logger}) => {
+    app.action('slack-approval-approve', async ({ack, client, body, logger, payload}) => {
       try {
+        console.log('Payload: ', JSON.stringify(payload));
         if((body as any).actions?.find((e: any) => e.value === acceptValue)) {
           await ack();
           const response_blocks = (<BlockAction>body).message?.blocks
