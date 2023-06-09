@@ -41,13 +41,12 @@ const slackAppToken = process.env.SLACK_APP_TOKEN || "";
 const channel_id = process.env.SLACK_CHANNEL_ID || "";
 const environment = process.env.ENVIRONMENT || "";
 const url = process.env.URL || "";
-const runport = process.env.PORT || 0;
+const runport = process.env.PORT || 3000;
 const app = new bolt_1.App({
     token: token,
     signingSecret: signingSecret,
     appToken: slackAppToken,
     socketMode: true,
-    port: runport,
     logLevel: bolt_1.LogLevel.DEBUG,
 });
 function run() {
@@ -173,8 +172,8 @@ function run() {
                 process.exit(1);
             }));
             (() => __awaiter(this, void 0, void 0, function* () {
-                yield app.start(3000);
-                console.log('Waiting Approval reaction.....');
+                const res = yield app.start(runport);
+                console.log('Waiting Approval reaction.....' + runport, res);
             }))();
         }
         catch (error) {

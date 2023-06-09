@@ -8,14 +8,13 @@ const slackAppToken = process.env.SLACK_APP_TOKEN || ""
 const channel_id    = process.env.SLACK_CHANNEL_ID || ""
 const environment   = process.env.ENVIRONMENT || ""
 const url           = process.env.URL || ""
-const runport : any  = process.env.PORT || 0
+const runport : any  = process.env.PORT || 3000
 
 const app = new App({
   token: token,
   signingSecret: signingSecret,
   appToken: slackAppToken,
   socketMode: true,
-  port: runport,
   logLevel: LogLevel.DEBUG,
 });
 
@@ -147,8 +146,8 @@ async function run(): Promise<void> {
     });
 
     (async () => {
-      await app.start(3000);
-      console.log('Waiting Approval reaction.....');
+      const res = await app.start(runport);
+      console.log('Waiting Approval reaction.....'+ runport, res);
     })();
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
