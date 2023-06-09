@@ -1,4 +1,4 @@
-name: slack-approval22
+name: slack-approval2
 
 on:
   push:
