@@ -1,6 +1,7 @@
 import * as core from '@actions/core'
 import { App, BlockAction, LogLevel } from '@slack/bolt'
 import { WebClient } from '@slack/web-api'
+import { randomUUID } from 'crypto'
 
 const token = process.env.SLACK_BOT_TOKEN || ""
 const signingSecret =  process.env.SLACK_SIGNING_SECRET || ""
@@ -9,8 +10,8 @@ const channel_id    = process.env.SLACK_CHANNEL_ID || ""
 const environment   = process.env.ENVIRONMENT || ""
 const url           = process.env.URL || ""
 const runport : any  = process.env.PORT || 3000
-const acceptValue : any = `${environment}-approve`;
-const rejectValue : any = `${environment}-reject`;
+const acceptValue : any = `${randomUUID()}-approve`;
+const rejectValue : any = `${randomUUID()}-reject`;
 
 const app = new App({
   token: token,

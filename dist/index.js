@@ -35,6 +35,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 const bolt_1 = require("@slack/bolt");
 const web_api_1 = require("@slack/web-api");
+const crypto_1 = require("crypto");
 const token = process.env.SLACK_BOT_TOKEN || "";
 const signingSecret = process.env.SLACK_SIGNING_SECRET || "";
 const slackAppToken = process.env.SLACK_APP_TOKEN || "";
@@ -42,8 +43,8 @@ const channel_id = process.env.SLACK_CHANNEL_ID || "";
 const environment = process.env.ENVIRONMENT || "";
 const url = process.env.URL || "";
 const runport = process.env.PORT || 3000;
-const acceptValue = `${environment}-approve`;
-const rejectValue = `${environment}-reject`;
+const acceptValue = `${(0, crypto_1.randomUUID)()}-approve`;
+const rejectValue = `${(0, crypto_1.randomUUID)()}-reject`;
 const app = new bolt_1.App({
     token: token,
     signingSecret: signingSecret,
