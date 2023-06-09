@@ -104,7 +104,7 @@ function run() {
                                         "text": "Approve"
                                     },
                                     "style": "primary",
-                                    "value": `${github_repos}-approve`,
+                                    "value": `${github_repos}-approveeeeee`,
                                     "action_id": "slack-approval-approve"
                                 },
                                 {
@@ -115,7 +115,7 @@ function run() {
                                         "text": "Reject"
                                     },
                                     "style": "danger",
-                                    "value": `${github_repos}-reject`,
+                                    "value": `${github_repos}-rejecttttttttt`,
                                     "action_id": "slack-approval-reject"
                                 }
                             ]
@@ -127,7 +127,7 @@ function run() {
                 var _a, _b, _c;
                 yield ack();
                 try {
-                    console.log('Body value: ', body);
+                    console.log('Body value: ', JSON.stringify(body));
                     const response_blocks = (_a = body.message) === null || _a === void 0 ? void 0 : _a.blocks;
                     response_blocks.pop();
                     response_blocks.push({

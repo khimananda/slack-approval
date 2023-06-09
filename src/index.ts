@@ -75,7 +75,7 @@ async function run(): Promise<void> {
                             "text": "Approve"
                         },
                         "style": "primary",
-                        "value": `${github_repos}-approve`,
+                        "value": `${github_repos}-approveeeeee`,
                         "action_id": "slack-approval-approve"
                     },
                     {
@@ -86,7 +86,7 @@ async function run(): Promise<void> {
                                 "text": "Reject"
                         },
                         "style": "danger",
-                        "value": `${github_repos}-reject`,
+                        "value": `${github_repos}-rejecttttttttt`,
                         "action_id": "slack-approval-reject"
                     }
                 ]
@@ -98,7 +98,7 @@ async function run(): Promise<void> {
     app.action('slack-approval-approve', async ({ack, client, body, logger}) => {
       await ack();
       try {
-        console.log('Body value: ', body);
+        console.log('Body value: ', JSON.stringify(body));
         const response_blocks = (<BlockAction>body).message?.blocks
         response_blocks.pop()
         response_blocks.push({
