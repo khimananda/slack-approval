@@ -53,6 +53,6 @@ jobs:
           SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
           SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
           ENVIRONMENT: "production"
-          URL: "https://khimanand.com.np"
+          URL: "https://khimananda.com.np"
         timeout-minutes: 10
       
