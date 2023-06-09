@@ -127,12 +127,11 @@ function run() {
                 });
             }))();
             app.action('slack-approval-approve', ({ ack, client, body, logger, payload }) => __awaiter(this, void 0, void 0, function* () {
-                var _a, _b, _c, _d;
+                var _a, _b, _c;
                 try {
-                    console.log('Payload: ', JSON.stringify(payload.value));
-                    if ((_a = body.actions) === null || _a === void 0 ? void 0 : _a.find((e) => e.value === acceptValue)) {
+                    if (payload.value === acceptValue) {
                         yield ack();
-                        const response_blocks = (_b = body.message) === null || _b === void 0 ? void 0 : _b.blocks;
+                        const response_blocks = (_a = body.message) === null || _a === void 0 ? void 0 : _a.blocks;
                         response_blocks.pop();
                         response_blocks.push({
                             'type': 'section',
@@ -142,8 +141,8 @@ function run() {
                             },
                         });
                         yield client.chat.update({
-                            channel: ((_c = body.channel) === null || _c === void 0 ? void 0 : _c.id) || "",
-                            ts: ((_d = body.message) === null || _d === void 0 ? void 0 : _d.ts) || "",
+                            channel: ((_b = body.channel) === null || _b === void 0 ? void 0 : _b.id) || "",
+                            ts: ((_c = body.message) === null || _c === void 0 ? void 0 : _c.ts) || "",
                             blocks: response_blocks
                         });
                         process.exit(0);
@@ -154,12 +153,12 @@ function run() {
                     process.exit(1);
                 }
             }));
-            app.action('slack-approval-reject', ({ ack, client, body, logger }) => __awaiter(this, void 0, void 0, function* () {
-                var _e, _f, _g, _h;
+            app.action('slack-approval-reject', ({ ack, client, body, logger, payload }) => __awaiter(this, void 0, void 0, function* () {
+                var _d, _e, _f;
                 try {
-                    if ((_e = body.actions) === null || _e === void 0 ? void 0 : _e.find((e) => e.value === rejectValue)) {
+                    if (payload.value === rejectValue) {
                         yield ack();
-                        const response_blocks = (_f = body.message) === null || _f === void 0 ? void 0 : _f.blocks;
+                        const response_blocks = (_d = body.message) === null || _d === void 0 ? void 0 : _d.blocks;
                         response_blocks.pop();
                         response_blocks.push({
                             'type': 'section',
@@ -169,8 +168,8 @@ function run() {
                             },
                         });
                         yield client.chat.update({
-                            channel: ((_g = body.channel) === null || _g === void 0 ? void 0 : _g.id) || "",
-                            ts: ((_h = body.message) === null || _h === void 0 ? void 0 : _h.ts) || "",
+                            channel: ((_e = body.channel) === null || _e === void 0 ? void 0 : _e.id) || "",
+                            ts: ((_f = body.message) === null || _f === void 0 ? void 0 : _f.ts) || "",
                             blocks: response_blocks
                         });
                         process.exit(1);
