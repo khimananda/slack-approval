@@ -129,8 +129,6 @@ function run() {
             app.action('slack-approval-approve', ({ ack, client, body, logger }) => __awaiter(this, void 0, void 0, function* () {
                 var _a, _b, _c, _d;
                 try {
-                    console.log("Accept value: ", acceptValue);
-                    console.log("Body Value: ", JSON.stringify(body));
                     if ((_a = body.actions) === null || _a === void 0 ? void 0 : _a.find((e) => e.value === acceptValue)) {
                         yield ack();
                         const response_blocks = (_b = body.message) === null || _b === void 0 ? void 0 : _b.blocks;
@@ -184,7 +182,7 @@ function run() {
             }));
             (() => __awaiter(this, void 0, void 0, function* () {
                 const res = yield app.start(runport);
-                console.log('Waiting Approval reaction.....' + runport, res);
+                console.log('Waiting Approval reaction.....');
             }))();
         }
         catch (error) {

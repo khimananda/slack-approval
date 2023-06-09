@@ -100,8 +100,6 @@ async function run(): Promise<void> {
 
     app.action('slack-approval-approve', async ({ack, client, body, logger}) => {
       try {
-        console.log("Accept value: ", acceptValue);
-        console.log("Body Value: ", JSON.stringify(body));
         if((body as any).actions?.find((e: any) => e.value === acceptValue)) {
           await ack();
           const response_blocks = (<BlockAction>body).message?.blocks
@@ -159,7 +157,7 @@ async function run(): Promise<void> {
 
     (async () => {
       const res = await app.start(runport);
-      console.log('Waiting Approval reaction.....'+ runport, res);
+      console.log('Waiting Approval reaction.....');
     })();
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
