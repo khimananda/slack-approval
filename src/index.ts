@@ -9,8 +9,8 @@ const channel_id    = process.env.SLACK_CHANNEL_ID || ""
 const environment   = process.env.ENVIRONMENT || ""
 const url           = process.env.URL || ""
 const runport : any  = process.env.PORT || 3000
-const acceptValue : any = `${URL}-approve`;
-const rejectValue : any = `${URL}-reject`;
+const acceptValue : any = `${environment}-approve`;
+const rejectValue : any = `${environment}-reject`;
 
 const app = new App({
   token: token,

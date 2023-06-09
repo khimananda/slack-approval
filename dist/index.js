@@ -42,8 +42,8 @@ const channel_id = process.env.SLACK_CHANNEL_ID || "";
 const environment = process.env.ENVIRONMENT || "";
 const url = process.env.URL || "";
 const runport = process.env.PORT || 3000;
-const acceptValue = `${URL}-approve`;
-const rejectValue = `${URL}-reject`;
+const acceptValue = `${environment}-approve`;
+const rejectValue = `${environment}-reject`;
 const app = new bolt_1.App({
     token: token,
     signingSecret: signingSecret,
