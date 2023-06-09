@@ -13,7 +13,7 @@ on:
 jobs:
   approval2:
     runs-on: ubuntu-latest
-    environment: eu-production
+    environment: production
     steps:
       - name: Checkout
         uses: actions/checkout@v3
