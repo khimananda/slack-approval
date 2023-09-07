@@ -42,6 +42,8 @@ const slackAppToken = process.env.SLACK_APP_TOKEN || "";
 const channel_id = process.env.SLACK_CHANNEL_ID || "";
 const environment = process.env.ENVIRONMENT || "";
 const url = process.env.URL || "";
+const approver = process.env.APPROVER || "";
+const requestReason = process.env.REQUEST_REASON || "";
 const runport = process.env.PORT || 3000;
 const acceptValue = `${(0, crypto_1.randomUUID)()}-approve`;
 const rejectValue = `${(0, crypto_1.randomUUID)()}-reject`;
@@ -61,7 +63,6 @@ function run() {
             const run_id = process.env.GITHUB_RUN_ID || "";
             const actionsUrl = `${github_server_url}/${github_repos}/actions/runs/${run_id}`;
             const workflow = process.env.GITHUB_WORKFLOW || "";
-            const runnerOS = process.env.RUNNER_OS || "";
             const actor = process.env.GITHUB_ACTOR || "";
             (() => __awaiter(this, void 0, void 0, function* () {
                 yield web.chat.postMessage({
@@ -72,7 +73,7 @@ function run() {
                             "type": "section",
                             "text": {
                                 "type": "mrkdwn",
-                                "text": "GitHub <" + actionsUrl + "|ACTION> Approval Request",
+                                "text": "GHA Approval Request for " + requestReason + " (see <" + actionsUrl + "|ACTION>",
                             }
                         },
                         {
@@ -80,7 +81,11 @@ function run() {
                             "fields": [
                                 {
                                     "type": "mrkdwn",
-                                    "text": `*GitHub Actor:* ${actor}`
+                                    "text": `*Triggering Actor:* ${actor}`
+                                },
+                                {
+                                    "type": "mrkdwn",
+                                    "text": `*Approving Actor:* ${approver}`
                                 },
                                 {
                                     "type": "mrkdwn",
