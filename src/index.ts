@@ -43,7 +43,7 @@ async function run(): Promise<void> {
               "type": "section",
               "text": {
                   "type": "mrkdwn",
-                  "text": "GHA Approval Request for " + requestReason + " (see <" + actionsUrl + "|ACTION>",
+                  "text": "GHA Approval Request for " + requestReason + " (see <" + actionsUrl + "|ACTION>)",
                 }
             },
             {
