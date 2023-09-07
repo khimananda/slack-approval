@@ -9,6 +9,8 @@ const slackAppToken = process.env.SLACK_APP_TOKEN || ""
 const channel_id    = process.env.SLACK_CHANNEL_ID || ""
 const environment   = process.env.ENVIRONMENT || ""
 const url           = process.env.URL || ""
+const approver      = process.env.APPROVER || ""
+const requestReason = process.env.REQUEST_REASON || ""
 const runport : any  = process.env.PORT || 3000
 const acceptValue : any = `${randomUUID()}-approve`;
 const rejectValue : any = `${randomUUID()}-reject`;
@@ -26,12 +28,11 @@ async function run(): Promise<void> {
     const web = new WebClient(token);
 
     const github_server_url = process.env.GITHUB_SERVER_URL || "";
-    const github_repos = process.env.GITHUB_REPOSITORY || "";
-    const run_id = process.env.GITHUB_RUN_ID || "";
-    const actionsUrl = `${github_server_url}/${github_repos}/actions/runs/${run_id}`;
-    const workflow   = process.env.GITHUB_WORKFLOW || "";
-    const runnerOS   = process.env.RUNNER_OS || "";
-    const actor      = process.env.GITHUB_ACTOR || "";
+    const github_repos      = process.env.GITHUB_REPOSITORY || "";
+    const run_id            = process.env.GITHUB_RUN_ID || "";
+    const actionsUrl        = `${github_server_url}/${github_repos}/actions/runs/${run_id}`;
+    const workflow          = process.env.GITHUB_WORKFLOW || "";
+    const actor             = process.env.GITHUB_ACTOR || "";
 
     (async () => {
       await web.chat.postMessage({ 
@@ -42,7 +43,7 @@ async function run(): Promise<void> {
               "type": "section",
               "text": {
                   "type": "mrkdwn",
-                  "text": "GitHub <" + actionsUrl + "|ACTION> Approval Request",
+                  "text": "GHA Approval Request for " + requestReason + " (see <" + actionsUrl + "|ACTION>",
                 }
             },
             {
@@ -50,7 +51,12 @@ async function run(): Promise<void> {
               "fields": [
                 {
                   "type": "mrkdwn",
-                  "text": `*GitHub Actor:* ${actor}`
+                  "text": `*Triggering Actor:* ${actor}`
+                },
+                
+                {
+                  "type": "mrkdwn",
+                  "text": `*Approving Actor:* ${approver}`
                 },
                 
                 {
