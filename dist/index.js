@@ -65,7 +65,7 @@ function run() {
             const workflow = process.env.GITHUB_WORKFLOW || "";
             const actor = process.env.GITHUB_ACTOR || "";
             (() => __awaiter(this, void 0, void 0, function* () {
-                yield web.chat.postMessage({
+                const result = yield web.chat.postMessage({
                     channel: channel_id,
                     text: "GitHub Actions Approval request",
                     blocks: [
@@ -73,7 +73,7 @@ function run() {
                             "type": "section",
                             "text": {
                                 "type": "mrkdwn",
-                                "text": "GHA Approval Request for " + requestReason + " (see <" + actionsUrl + "|ACTION>)",
+                                "text": "GHA Approval Request for `" + requestReason + "` (see <" + actionsUrl + "|ACTION>) (Approval buttons are in thread)",
                             }
                         },
                         {
@@ -100,7 +100,14 @@ function run() {
                                     "text": `*URL: *${url}`
                                 }
                             ]
-                        },
+                        }
+                    ]
+                });
+                const result2 = yield web.chat.postMessage({
+                    channel: channel_id,
+                    thread_ts: result.ts,
+                    text: "GitHub Actions Approval request",
+                    blocks: [
                         {
                             "type": "actions",
                             "elements": [

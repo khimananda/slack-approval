@@ -35,7 +35,7 @@ async function run(): Promise<void> {
     const actor             = process.env.GITHUB_ACTOR || "";
 
     (async () => {
-      await web.chat.postMessage({ 
+      const result = await web.chat.postMessage({ 
         channel: channel_id, 
         text: "GitHub Actions Approval request",
         blocks: [
@@ -43,7 +43,7 @@ async function run(): Promise<void> {
               "type": "section",
               "text": {
                   "type": "mrkdwn",
-                  "text": "GHA Approval Request for " + requestReason + " (see <" + actionsUrl + "|ACTION>)",
+                  "text": "GHA Approval Request for `" + requestReason + "` (see <" + actionsUrl + "|ACTION>) (Approval buttons are in thread)",
                 }
             },
             {
@@ -72,7 +72,15 @@ async function run(): Promise<void> {
                   "text": `*URL: *${url}`
                 }
               ]
-            },
+            }
+        ]
+      });
+
+      const result2 = await web.chat.postMessage({ 
+        channel: channel_id,
+        thread_ts: result.ts,
+        text: "GitHub Actions Approval request",
+        blocks: [
             {
                 "type": "actions",
                 "elements": [
