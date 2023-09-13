@@ -73,7 +73,7 @@ function run() {
                             "type": "section",
                             "text": {
                                 "type": "mrkdwn",
-                                "text": "GHA Approval Request for `" + requestReason + "` (see <" + actionsUrl + "|ACTION>) (Approval buttons are in thread)",
+                                "text": `GHA Approval Request for \`${requestReason}\` (Approval buttons are in thread)`
                             }
                         },
                         {
@@ -93,11 +93,11 @@ function run() {
                                 },
                                 {
                                     "type": "mrkdwn",
-                                    "text": `*Workflow:* ${workflow}`
+                                    "text": `*Workflow:* <${actionsUrl}|${workflow}>`
                                 },
                                 {
                                     "type": "mrkdwn",
-                                    "text": `*URL: *${url}`
+                                    "text": `*URL:* ${url}`
                                 }
                             ]
                         }
