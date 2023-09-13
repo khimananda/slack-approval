@@ -89,7 +89,7 @@ function run() {
                                 },
                                 {
                                     "type": "mrkdwn",
-                                    "text": `*ENV:* ${environment}`
+                                    "text": `*Branch:* ${environment}`
                                 },
                                 {
                                     "type": "mrkdwn",

@@ -61,7 +61,7 @@ async function run(): Promise<void> {
                 
                 {
                   "type": "mrkdwn",
-                  "text": `*ENV:* ${environment}`
+                  "text": `*Branch:* ${environment}`
                 },
                 {
                   "type": "mrkdwn",
