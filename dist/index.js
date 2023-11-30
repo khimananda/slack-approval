@@ -55,7 +55,7 @@ const app = new bolt_1.App({
     socketMode: true,
     logLevel: bolt_1.LogLevel.DEBUG,
 });
-var approvals_received = 0;
+var approvals_received = new Set();
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -171,10 +171,10 @@ function run() {
                                 ts: ((_c = body.message) === null || _c === void 0 ? void 0 : _c.ts) || "",
                                 blocks: response_blocks
                             });
-                            approvals_received += 1;
+                            approvals_received.add(i);
                             console.log(`Received approval for ${approvers[i]} from ${body.user.id}`);
-                            console.log(`${approvers.length - approvals_received} approvals still needed.`);
-                            if (approvals_received == approvers.length) {
+                            console.log(`${approvers.length - approvals_received.size} approvals still needed.`);
+                            if (approvals_received.size == approvers.length) {
                                 process.exit(0);
                             }
                         }

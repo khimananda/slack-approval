@@ -24,7 +24,7 @@ const app = new App({
   logLevel: LogLevel.DEBUG,
 });
 
-var approvals_received : number = 0;
+var approvals_received : Set<number> = new Set<number>();
 
 async function run(): Promise<void> {
   try {
@@ -147,12 +147,12 @@ async function run(): Promise<void> {
               blocks: response_blocks
             })
 
-            approvals_received += 1;
+            approvals_received.add(i);
 
             console.log(`Received approval for ${approvers[i]} from ${body.user.id}`);
-            console.log(`${approvers.length - approvals_received} approvals still needed.`);
+            console.log(`${approvers.length - approvals_received.size} approvals still needed.`);
 
-            if(approvals_received == approvers.length) {
+            if(approvals_received.size == approvers.length) {
               process.exit(0);
             }
           }
