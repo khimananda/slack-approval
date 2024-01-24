@@ -1,4 +1,4 @@
-name: Test slack-approval
+name: Test slack approval
 
 on:
   push:
@@ -11,48 +11,37 @@ on:
       - reopened
 
 jobs:
-  approval:
+  approval2:
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-
+         fetch-depth: 0
       - run: |
-          npm install
-
+            npm install
       - name: slack-approval
         uses: ./
         env:
-          SLACK_APP_TOKEN: ${{ secrets.SLACK_APP_TOKEN }}
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
-          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-          ENVIRONMENT: "production"
-          URL: "https://khimanand.com.np"
-        timeout-minutes: 10
-  approval-2nd-on:
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      
-      - run: |
-          npm install
-      
+          SLACK_APP_TOKEN: ${{ secrets.SLACK_APP__AFRESHY__APP_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_APP__AFRESHY__BOT_TOKEN }}
+          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_APP__AFRESHY__SIGNING_SECRET }}
+          SLACK_CHANNEL_ID: ${{ vars.SLACK__CHANNEL_ID__NOISE }}
+          APPROVERS: ""
+          REQUEST_REASON: "gha-slack-approval testing"
+          ENVIRONMENT: "`${{ github.ref_name }}`"
+          URL: <${{ github.server_url }}/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.event.after }}|diff>
+        timeout-minutes: 120
       - name: slack-approval
         uses: ./
         env:
-          SLACK_APP_TOKEN: ${{ secrets.SLACK_APP_TOKEN }}
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_SIGNING_SECRET }}
-          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-          ENVIRONMENT: "production"
-          URL: "https://khimananda.com.np"
-        timeout-minutes: 10
+          SLACK_APP_TOKEN: ${{ secrets.SLACK_APP__AFRESHY__APP_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_APP__AFRESHY__BOT_TOKEN }}
+          SLACK_SIGNING_SECRET: ${{ secrets.SLACK_APP__AFRESHY__SIGNING_SECRET }}
+          SLACK_CHANNEL_ID: ${{ vars.SLACK__CHANNEL_ID__NOISE }}
+          APPROVERS: ""
+          REQUEST_REASON: "gha-slack-approval testing timeout behavior (1 minute timeout)"
+          ENVIRONMENT: "`${{ github.ref_name }}`"
+          URL: <${{ github.server_url }}/${{ github.repository }}/compare/${{ github.event.before }}...${{ github.event.after }}|diff>
+        timeout-minutes: 1
       
